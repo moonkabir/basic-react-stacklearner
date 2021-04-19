@@ -1,6 +1,7 @@
 import React, {Component}from 'react';
 import Profile from './profile/index';
-import Skills from './profile/skills'
+import Skills from './profile/skills';
+import MyProps from './props'
 class App extends Component{
     render() {
         return (
@@ -13,8 +14,10 @@ class App extends Component{
                 <Skills/>
                 <p>Mr.y</p>
                 <Skills/>
+                <MyProps name ="Md.Moon Kabir"/>
+                <MyProps name ="Md.Akhteruzzaman Moon"/>
+                <MyProps name ="Md.Moon"/>
                 </div>
-                
             </div>
         )
     }

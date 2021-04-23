@@ -28,7 +28,7 @@ class App extends Component{
     // }
 
     // count = 10;
-
+    //state is a object 
     state = { 
         count:0
     };
@@ -70,9 +70,14 @@ class App extends Component{
                                 return{
                                     count:prev.count + 1
                                 }
+                            },
+                            ()=>{
+                                // print after state update
+                                console.log('clicked...',this.state.count);
                             }
                         )
-                        console.log('clicked...',this.state.count);
+                        // print before state update
+                        // console.log('clicked...',this.state.count);
                     }}
                 >
                     add+1</button>

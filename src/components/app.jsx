@@ -18,11 +18,27 @@ const ChildComponent = props => (
     </div>
 )
 class App extends Component{
+    //constructor is old style react 16 
+    // constructor(props){
+    //     super(props);
+    //     this.count = 0;
+    //     this.state = {
+    //         count: 0
+    //     } 
+    // }
+
+    // count = 10;
+
+    state = { 
+        count:0
+    };
+
     getContext(context) {
         console.log(context);
     }
     render() {
         // this.getContext(this);
+        // console.log(this.count);
         return (
             <div>
                 <h1>Hello come from app.jsx file</h1>
@@ -42,6 +58,14 @@ class App extends Component{
                 <ChildComponent>
                     <h3>I am from Parent Component</h3>
                 </ChildComponent>
+                <h1>Count: {this.state.count}</h1>
+                <button
+                    onClick={() => {
+                        this.setState({count: this.state.count + 1});
+                        console.log('clicked...',this.state.count);
+                    }}
+                >
+                    add+1</button>
             </div>
         )
     }

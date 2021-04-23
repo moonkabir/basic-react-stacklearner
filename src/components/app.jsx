@@ -3,8 +3,19 @@ import Profile from './profile/index';
 import Skills from './profile/skills';
 import Bio from './profile/bio';
 import MyProps from './props'
-class App extends Component{
+
+class Child extends Component {
     render() {
+        this.props.func(this);
+        return <h1>I am Child</h1>
+    }
+}
+class App extends Component{
+    getContext(context) {
+        console.log(context);
+    }
+    render() {
+        this.getContext(this);
         return (
             <div>
                 <h1>Hello come from app.jsx file</h1>
@@ -20,6 +31,7 @@ class App extends Component{
                     <MyProps name ="Md.Moon"/>
                 </div>
                 <Bio  name ="Test" title ="title"/>
+                <Child func={this.getContext} />
             </div>
         )
     }

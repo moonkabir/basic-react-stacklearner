@@ -60,8 +60,18 @@ class App extends Component{
                 </ChildComponent>
                 <h1>Count: {this.state.count}</h1>
                 <button
-                    onClick={() => {
-                        this.setState({count: this.state.count + 1});
+                    // onClick={() => {
+                    //     this.setState({count: this.state.count + 1});
+                    //     console.log('clicked...',this.state.count);
+                    // }}
+                    onClick={() =>{
+                        this.setState(
+                            prev =>{
+                                return{
+                                    count:prev.count + 1
+                                }
+                            }
+                        )
                         console.log('clicked...',this.state.count);
                     }}
                 >

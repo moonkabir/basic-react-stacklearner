@@ -10,12 +10,19 @@ class Child extends Component {
         return <h1>I am Child</h1>
     }
 }
+const ChildComponent = props => (
+    <div>
+        <h3>I am Child Component</h3>
+        <p>I don't know what to do</p>
+        {props.children}
+    </div>
+)
 class App extends Component{
     getContext(context) {
         console.log(context);
     }
     render() {
-        this.getContext(this);
+        // this.getContext(this);
         return (
             <div>
                 <h1>Hello come from app.jsx file</h1>
@@ -31,7 +38,10 @@ class App extends Component{
                     <MyProps name ="Md.Moon"/>
                 </div>
                 <Bio  name ="Test" title ="title"/>
-                <Child func={this.getContext} />
+                {/* <Child func={this.getContext} /> */}
+                <ChildComponent>
+                    <h3>I am from Parent Component</h3>
+                </ChildComponent>
             </div>
         )
     }

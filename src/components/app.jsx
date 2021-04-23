@@ -1,88 +1,58 @@
 import React, {Component}from 'react';
-import Profile from './profile/index';
-import Skills from './profile/skills';
-import Bio from './profile/bio';
-import MyProps from './props'
 
-class Child extends Component {
-    render() {
-        this.props.func(this);
-        return <h1>I am Child</h1>
-    }
-}
-const ChildComponent = props => (
-    <div>
-        <h3>I am Child Component</h3>
-        <p>I don't know what to do</p>
-        {props.children}
-    </div>
-)
-class App extends Component{
-    //constructor is old style react 16 
-    // constructor(props){
-    //     super(props);
-    //     this.count = 0;
-    //     this.state = {
-    //         count: 0
-    //     } 
-    // }
-
-    // count = 10;
-    //state is a object 
-    state = { 
+class App extends Component {
+    state={
         count:0
-    };
-
-    getContext(context) {
-        console.log(context);
+    }
+    intervalId = null;
+    increamentCount = () =>{
+        this.setState({count: this.state.count + 1 });
+    }
+    decreamentCount = () =>{
+        if(this.state.count>0){
+            this.setState({count: this.state.count - 1 });
+        }
+    }
+    setTimer = () =>{
+        if(this.state.count > 0 && !this.intervalId){
+            this.intervalId = setInterval(() =>{
+                this.setState({count: this.state.count -1 }, () =>{
+                    if(this.state.count === 0){
+                        alert('Timer expired');
+                        clearInterval(this.intervalId);
+                        this.intervalId = null;
+                    }
+                })
+            },1000);
+        }
+    }
+    setReset = () =>{
+        this.setState({count: 0})
+        clearInterval(this.intervalId);
+        this.intervalId = null;
+    }
+    setPause = () =>{
+        if(this.intervalId){
+            clearInterval(this.intervalId);
+            this.intervalId = null;
+        }
     }
     render() {
-        // this.getContext(this);
-        // console.log(this.count);
         return (
-            <div>
-                <h1>Hello come from app.jsx file</h1>
-                <Profile />
-                <div style={{marginTop:'30px'}}>
-                    <h3>List of Programmer</h3>
-                    <p>Mr.X</p>
-                    <Skills skillA='Php' skillB='WordPress' skillC='JavaScript'/>
-                    <p>Mr.y</p>
-                    <Skills skillA='Php' skillB='WordPress' skillC='JavaScript' skillD='Laravel'/>
-                    <MyProps name ="Md.Moon Kabir"/>
-                    <MyProps name ="Md.Akhteruzzaman Moon"/>
-                    <MyProps name ="Md.Moon"/>
+            <div className="App">
+                <h1 className="Heading"> Simple Timer</h1>
+                <div className="Container">
+                    <button className="Btn" onClick={this.decreamentCount}>-</button>
+                    <span className="text">{this.state.count}</span>
+                    <button className="Btn" onClick={this.increamentCount}>+</button>
                 </div>
-                <Bio  name ="Test" title ="title"/>
-                {/* <Child func={this.getContext} /> */}
-                <ChildComponent>
-                    <h3>I am from Parent Component</h3>
-                </ChildComponent>
-                <h1>Count: {this.state.count}</h1>
-                <button
-                    // onClick={() => {
-                    //     this.setState({count: this.state.count + 1});
-                    //     console.log('clicked...',this.state.count);
-                    // }}
-                    onClick={() =>{
-                        this.setState(
-                            prev =>{
-                                return{
-                                    count:prev.count + 1
-                                }
-                            },
-                            ()=>{
-                                // print after state update
-                                console.log('clicked...',this.state.count);
-                            }
-                        )
-                        // print before state update
-                        // console.log('clicked...',this.state.count);
-                    }}
-                >
-                    add+1</button>
+                <div className="Container">
+                    <button className="Btn" onClick={this.setTimer}>Start</button>
+                    <button className="Btn" onClick={this.setReset}>Reset</button>
+                    <button className="Btn" onClick={this.setPause}>Pause</button>
+                </div>
             </div>
-        )
+        );
     }
 }
 export default App;

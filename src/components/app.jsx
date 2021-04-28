@@ -1,5 +1,5 @@
 import React, {Component}from 'react';
-
+import classes from './app.module.css';
 class App extends Component {
     state={
         count:0
@@ -49,7 +49,7 @@ class App extends Component {
                 <div className="Container">
                     <button className="Btn" onClick={this.setTimer}>Start</button>
                     <button className="Btn" onClick={this.setReset}>Reset</button>
-                    <button className="Btn" onClick={this.setPause}>Pause</button>
+                    <button className={classes.button} onClick={this.setPause}>Pause</button>
                 </div>
             </div>
         );

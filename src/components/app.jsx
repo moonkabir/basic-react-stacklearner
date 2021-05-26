@@ -8,7 +8,15 @@ class App extends Component {
     handleChange = event =>{
         this.setState({name: event.target.value});
     };
-
+    handleFocus = event =>{
+        console.log("I am Focus Event")
+    }
+    handleBlur = event =>{
+        if(!this.state.name){
+            alert("Please Enter Your Name")
+        }
+        console.log("I am Blur Event")
+    }
 
     render() {
         return (
@@ -18,6 +26,8 @@ class App extends Component {
                     placeholder="Enter Some Text"
                     value={this.state.name}
                     onChange={this.handleChange}
+                    onFocus={this.handleFocus}
+                    onBlur={this.handleBlur}
                 />
                 <br/>
                 <br/>

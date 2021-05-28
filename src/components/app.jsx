@@ -1,5 +1,5 @@
 import React, {Component}from 'react';
-
+import Inputs from './inputs'
 class App extends Component {
     state = {
         name: ''
@@ -21,6 +21,7 @@ class App extends Component {
     render() {
         return (
             <div>
+                <Inputs />
                 <input 
                     type="text"
                     placeholder="Enter Some Text"

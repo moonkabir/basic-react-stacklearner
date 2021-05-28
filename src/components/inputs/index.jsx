@@ -6,7 +6,8 @@ class Inputs extends React.Component{
         bio:"",
         birthday:"",
         gender:"",
-        agree: false
+        agree: false,
+        skills: []
     }
     handleChange = event => {
         this.setState({
@@ -16,10 +17,20 @@ class Inputs extends React.Component{
     handleCheck = event => {
         this.setState({
             agree: event.target.checked
-        })
-    }
+        });
+    };
+    handleSkillChange = event => {
+        if( event.target.checked ){
+            this.setState({
+                skills:[...this.state.skills,event.target.value]
+            })
+        }else{
+            const skills = this.state.skills.filter(skill => skill !== event.target.value);
+            this.setState({skills});
+        }
+    };
     render(){
-        const { name, country, bio, birthday, agree} = this.state;
+        const { name, country, bio, birthday, agree, skills} = this.state;
         return(
             <div>
                 <h1>Inputs</h1>
@@ -61,6 +72,13 @@ class Inputs extends React.Component{
                 <div>
                     <input type="radio" name="gender" value="Male" onChange={this.handleChange}/>Male
                     <input type="radio" name="gender" value="Female" onChange={this.handleChange}/>Female
+                </div>
+                <div>
+                    Skills: <br/>
+                    <input type="checkbox" name="skills" value="java" checked={skills.includes("java")} onChange={this.handleSkillChange}/>Java
+                    <input type="checkbox" name="skills" value="javascript" checked={skills.includes("javascript")} onChange={this.handleSkillChange}/>javascript
+                    <input type="checkbox" name="skills" value="PHP" checked={skills.includes("PHP")} onChange={this.handleSkillChange}/>PHP
+                    <input type="checkbox" name="skills" value="WordPress" checked={skills.includes("WordPress")} onChange={this.handleSkillChange}/>WordPress
                 </div>
                 <div>
                     <input type="checkbox" name="agree" checked={agree} onChange={this.handleCheck}/>

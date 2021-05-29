@@ -1,5 +1,6 @@
 import React, {Component}from 'react';
-import Inputs from './inputs'
+import Inputs from './inputs';
+import UnControlledForm from './forms';
 class App extends Component {
     state = {
         name: ''
@@ -20,7 +21,8 @@ class App extends Component {
 
     render() {
         return (
-            <div>
+            <div style={{"width":"500px","margin": "100px auto"}}>
+                <UnControlledForm />
                 <Inputs />
                 <input 
                     type="text"

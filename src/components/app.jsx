@@ -2,6 +2,7 @@ import React, {Component}from 'react';
 import Inputs from './inputs';
 import UnControlledForm from './forms/uncontrolledform';
 import ControlledForm from './forms/controlledform';
+import SignupForm from './signup-form';
 class App extends Component {
     state = {
         name: ''
@@ -23,9 +24,9 @@ class App extends Component {
     render() {
         return (
             <div style={{"width":"500px","margin": "100px auto"}}>
-                <ControlledForm />
-                <UnControlledForm />
-                <Inputs />
+                {/* <ControlledForm /> */}
+                {/* <UnControlledForm /> */}
+                {/* <Inputs /> */}
                 <input 
                     type="text"
                     placeholder="Enter Some Text"
@@ -37,7 +38,7 @@ class App extends Component {
                 <br/>
                 <br/>
                 {this.state.name && <h3> Welcome, {this.state.name}</h3>}
-                
+                <SignupForm/>
             </div>
         )
     }

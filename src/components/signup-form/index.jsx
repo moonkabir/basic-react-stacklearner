@@ -1,5 +1,5 @@
 import React from 'react';
-import forms from './form'
+import Form from './form'
 
 const initValues  = {
     name: '',
@@ -54,4 +54,4 @@ class SignupForm extends React.Component {
         );
     }
 }
-export default SignupForm;
+export default SignupForm

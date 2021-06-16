@@ -1,18 +1,18 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import textInput from './text-input';
+import propTypes from 'prop-types';
+import TextInput from './text-input';
 
 const Form = ({ values, agreement, handleChange, handleagrrement, handleSubmit}) =>{
     return (
         <form onSubmit ={handleSubmit}>
-            <textInput
+            <TextInput
                 name="name"
                 label="Name"
                 placeholder="Moon Kabir"
                 value={values.name}
                 onchange={handleChange}
             />
-            <textInput
+            <TextInput
                 name="email"
                 type="email"
                 label="Email"
@@ -20,7 +20,7 @@ const Form = ({ values, agreement, handleChange, handleagrrement, handleSubmit})
                 value={values.email}
                 onchange={handleChange}
             />
-            <textInput
+            <TextInput
                 name="password"
                 type="password"
                 label="Password"
@@ -28,7 +28,7 @@ const Form = ({ values, agreement, handleChange, handleagrrement, handleSubmit})
                 value={values.password}
                 onchange={handleChange}
             />
-            <textInput
+            <TextInput
                 name="birthDate"
                 type="date"
                 label="BirthDate"
@@ -54,7 +54,7 @@ const Form = ({ values, agreement, handleChange, handleagrrement, handleSubmit})
     );
 };
 
-Form.PropTypes = {
+Form.propTypes = {
     values: propTypes.object.isRequired,
     agreement: propTypes.bool.isRequired,
     handleChange: propTypes.func.isRequired,

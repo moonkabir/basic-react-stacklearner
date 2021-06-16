@@ -10,7 +10,7 @@ const Form = ({ values, agreement, handleChange, handleagrrement, handleSubmit})
                 label="Name"
                 placeholder="Moon Kabir"
                 value={values.name}
-                onchange={handleChange}
+                onChange={handleChange}
             />
             <TextInput
                 name="email"
@@ -18,7 +18,7 @@ const Form = ({ values, agreement, handleChange, handleagrrement, handleSubmit})
                 label="Email"
                 placeholder="a@b.com"
                 value={values.email}
-                onchange={handleChange}
+                onChange={handleChange}
             />
             <TextInput
                 name="password"
@@ -26,7 +26,7 @@ const Form = ({ values, agreement, handleChange, handleagrrement, handleSubmit})
                 label="Password"
                 placeholder="******"
                 value={values.password}
-                onchange={handleChange}
+                onChange={handleChange}
             />
             <TextInput
                 name="birthDate"
@@ -34,7 +34,7 @@ const Form = ({ values, agreement, handleChange, handleagrrement, handleSubmit})
                 label="BirthDate"
                 placeholder="Moon Kabir"
                 value={values.birthDate}
-                onchange={handleChange}
+                onChange={handleChange}
             />
             <div className="form-group">
                 <label>
@@ -45,7 +45,7 @@ const Form = ({ values, agreement, handleChange, handleagrrement, handleSubmit})
             </div>
             <div className="form-group">
                 <label>
-                    <input className="form-group" type="checkbox" name="agreement" checked={agreement} onchange={handleagrrement}/>
+                    <input className="form-group" type="checkbox" name="agreement" checked={agreement} onChange={handleagrrement}/>
                     I agree to the agreement
                 </label>
             </div>

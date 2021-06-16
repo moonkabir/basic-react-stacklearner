@@ -40,7 +40,7 @@ class App extends Component {
                 <br/>
                 <br/>
                 {this.state.name && <h3> Welcome, {this.state.name}</h3>}
-                {/* <SignupForm/> */}
+                <SignupForm/>
             </div>
         )
     }

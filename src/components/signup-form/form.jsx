@@ -2,7 +2,7 @@ import React from 'react';
 import propTypes from 'prop-types';
 import TextInput from './text-input';
 
-const Form = ({ values, agreement, handleChange, handleagrrement, handleSubmit}) =>{
+const Form = ({ values, agreement, errors, handleChange, handleagrrement, handleSubmit}) =>{
     return (
         <form onSubmit ={handleSubmit}>
             <TextInput
@@ -10,6 +10,7 @@ const Form = ({ values, agreement, handleChange, handleagrrement, handleSubmit})
                 label="Name"
                 placeholder="Moon Kabir"
                 value={values.name}
+                error={errors.name}
                 onChange={handleChange}
             />
             <TextInput
@@ -18,6 +19,7 @@ const Form = ({ values, agreement, handleChange, handleagrrement, handleSubmit})
                 label="Email"
                 placeholder="a@b.com"
                 value={values.email}
+                error={errors.email}
                 onChange={handleChange}
             />
             <TextInput
@@ -26,6 +28,7 @@ const Form = ({ values, agreement, handleChange, handleagrrement, handleSubmit})
                 label="Password"
                 placeholder="******"
                 value={values.password}
+                error={errors.password}
                 onChange={handleChange}
             />
             <TextInput
@@ -34,6 +37,7 @@ const Form = ({ values, agreement, handleChange, handleagrrement, handleSubmit})
                 label="BirthDate"
                 placeholder="Moon Kabir"
                 value={values.birthDate}
+                error={errors.birthDate}
                 onChange={handleChange}
             />
             <div className="form-group">
@@ -42,6 +46,7 @@ const Form = ({ values, agreement, handleChange, handleagrrement, handleSubmit})
                     <input className="form-group" type="radio" name="gender" value="Female" onChange={handleChange}/>Female
                     <input className="form-group" type="radio" name="gender" value="Other" onChange={handleChange}/>Other
                 </label>
+                {errors.gender && <div className="invalid-feedback">{errors.gender}</div>}
             </div>
             <div className="form-group">
                 <label>
@@ -57,6 +62,7 @@ const Form = ({ values, agreement, handleChange, handleagrrement, handleSubmit})
 Form.propTypes = {
     values: propTypes.object.isRequired,
     agreement: propTypes.bool.isRequired,
+    errors: propTypes.object.isRequired,
     handleChange: propTypes.func.isRequired,
     handleagrrement: propTypes.func.isRequired,
     handleSubmit: propTypes.func.isRequired,

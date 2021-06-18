@@ -1,8 +1,8 @@
 import React, {Component}from 'react';
-import Inputs from './inputs';
-import UnControlledForm from './forms/uncontrolledform';
-import ControlledForm from './forms/controlledform';
-import SplitForm from './split-form';
+// import Inputs from './inputs';
+// import UnControlledForm from './forms/uncontrolledform';
+// import ControlledForm from './forms/controlledform';
+// import SplitForm from './split-form';
 import SignupForm from './signup-form';
 class App extends Component {
     state = {
@@ -27,7 +27,7 @@ class App extends Component {
             <div style={{"width":"500px","margin": "100px auto"}}>
                 {/* <ControlledForm /> */}
                 {/* <UnControlledForm /> */}
-                <SplitForm />
+                {/* <SplitForm /> */}
                 {/* <Inputs /> */}
                 <input 
                     type="text"

@@ -12,7 +12,8 @@ const initValues  = {
 class SignupForm extends React.Component {
     state = {
         values: initValues,
-        agreement: false
+        agreement: false,
+        errors: {}
     }
 
     handleChange = event => {
@@ -33,11 +34,40 @@ class SignupForm extends React.Component {
 
     handleSubmit = event => {
         event.preventDefault();
-        console.log(this.state.values);
-        event.target.reset();
-        this.setState({values: initValues, agreement: false});
+        const { isValid, errors} = this.validate()
+        if(isValid){
+            console.log(this.state.values);
+            event.target.reset();
+            this.setState({values: initValues, agreement: false, errors: {} });
+        }else{
+            this.setState({errors});
+            console.log(errors);
+        }
     }
 
+    validate = () =>{
+        const errors = {}
+        const { values: { name, email, password, gender, birthDate } } = this.state
+        if(!name){
+            errors.name = "Please provide your name";
+        }
+        if(!email){
+            errors.email = "Please provide your email";
+        }
+        if(!password){
+            errors.password = "Please provide your password";
+        }
+        if(!birthDate){
+            errors.birthDate = "Please provide your birthDate";
+        }
+        if(!gender){
+            errors.gender = "Please select your gender";
+        }
+        return{
+            errors,
+            isValid : Object.keys(errors).length === 0
+        };
+    }
 
     render() {
         return (
@@ -46,6 +76,7 @@ class SignupForm extends React.Component {
                 <Form
                     values = {this.state.values}
                     agreement = {this.state.agreement}
+                    errors = {this.state.errors}
                     handleChange = {this.handleChange}
                     handleagrrement = {this.handleagrrement}
                     handleSubmit = {this.handleSubmit}

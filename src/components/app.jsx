@@ -6,8 +6,16 @@ import React, {Component}from 'react';
 import SignupForm from './signup-form';
 class App extends Component {
     state = {
-        name: ''
+        name: '',
+        users: []
     };
+
+    createUser = user =>{
+        user.id = new Date().getTime.toString();
+        this.setState({
+            users: [...this.state.users, user]
+        })
+    }
 
     handleChange = event =>{
         this.setState({name: event.target.value});
@@ -40,7 +48,17 @@ class App extends Component {
                 <br/>
                 <br/>
                 {this.state.name && <h3> Welcome, {this.state.name}</h3>}
-                <SignupForm/>
+                <SignupForm createUser={this.createUser}/>
+                <div>
+                    <h3>All registered Student</h3>
+                    <ul className="list-group">
+                        {this.state.users.map(user =>(
+                            <li key={user.id} className="list-group-item">
+                                {user.name} -> {user.email}
+                            </li>
+                        ))}
+                    </ul>
+                </div>
             </div>
         )
     }
